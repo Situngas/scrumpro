@@ -26,9 +26,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                    @if (Route::has("login"))
+                        @auth 
+                        <li class="nav-item"><a href="{{url('/dash')}}" class=" nav-link text-sm text-gray-700 dark:text-gray-500 underline">Dash</a></li>
+                        @else 
+                        <li class="nav-item"><a href="{{url('/login')}}" class=" nav-link text-sm text-gray-700 dark:text-gray-500 underline">Login</a></li>
+                        @if (Route::has('register'))
+                        <li class="nav-item"><a href="{{url('/register')}}"  class=" nav-link text-sm text-gray-700 dark:text-gray-500 underline">register</a></li>
+                        @endif
+                        @endauth
+                        @endif
                     </ul>
                 </div>
             </div>
